@@ -24,13 +24,13 @@ In `src/lib` directory, create a `supabase` directory and add:
 
 ### Browser Client
 
-- [`src/lib/supabase/browser-client.ts`](https://github.com/marshall-johnson/nextjs-supabase-example/blob/main/src/lib/supabase/browser-client.ts)
+- [`src/lib/supabase/browser-client.ts`](https://github.com/Joe-etzkorn/nextjs-supabase-example/blob/main/src/lib/supabase/browser-client.ts)
 
 This file contains the function used to call the supabase client in a nextjs client component
 
 ### Server Client
 
-- [`src/lib/supabase/server-client.ts`](https://github.com/marshall-johnson/nextjs-supabase-example/blob/main/src/lib/supabase/server-client.ts)
+- [`src/lib/supabase/server-client.ts`](https://github.com/Joe-etzkorn/nextjs-supabase-example/blob/main/src/lib/supabase/server-client.ts)
 
 This file contains 3 functions used to call the supabase client on the server
 
@@ -42,13 +42,13 @@ This file contains 3 functions used to call the supabase client on the server
 
 Create the `middleware.ts` in your `src` directory. This intercepts any route specified in the `matcher` and is used to refresh the supabase session cookies and also redirect users based on whether they're authenticated or not.
 
-**This can be used used for creating [protected routes](https://github.com/marshall-johnson/nextjs-supabase-example/blob/ba0d4d1b7f52a2f0435933892ea5d2b5cb7c1c0f/src/middleware.ts#L20).**
+**This can be used used for creating [protected routes](https://github.com/Joe-etzkorn/nextjs-supabase-example/blob/ba0d4d1b7f52a2f0435933892ea5d2b5cb7c1c0f/src/middleware.ts#L20).**
 
 An alternative method of creating protected routes is highlighted [here](#page-based-protected-routes).
 
-To run the middleware on every route, simply remove the [`matcher`](https://github.com/marshall-johnson/nextjs-supabase-example/blob/main/src/middleware.ts) object from the config.
+To run the middleware on every route, simply remove the [`matcher`](https://github.com/Joe-etzkorn/nextjs-supabase-example/blob/main/src/middleware.ts) object from the config.
 
-- [`src/middleware.ts`](https://github.com/marshall-johnson/nextjs-supabase-example/blob/main/src/middleware.ts)
+- [`src/middleware.ts`](https://github.com/Joe-etzkorn/nextjs-supabase-example/blob/main/src/middleware.ts)
 
 ## Configure Callback Endpoint
 
@@ -60,13 +60,13 @@ This API endpoint uses the code returned from the OAuth provider to sign in the 
 
 If authentication fails, the user is redirected to an another page specified in the callback.
 
-- [`src/app/auth/callback/route.ts`](https://github.com/marshall-johnson/nextjs-supabase-example/blob/main/src/app/auth/callback/route.ts)
+- [`src/app/auth/callback/route.ts`](https://github.com/Joe-etzkorn/nextjs-supabase-example/blob/main/src/app/auth/callback/route.ts)
 
 ### Authentication Error Page
 
 The user is redirected to this page when the authentication fails.
 
-- [`src/app/auth/auth-error/page.tsx`](https://github.com/marshall-johnson/nextjs-supabase-example/blob/main/src/app/auth/auth-error/page.tsx)
+- [`src/app/auth/auth-error/page.tsx`](https://github.com/Joe-etzkorn/nextjs-supabase-example/blob/main/src/app/auth/auth-error/page.tsx)
 
 ## Authentication Buttons
 
@@ -84,11 +84,11 @@ Example:
 <LoginButton nextUrl="/account" />
 ```
 
-- [`src/components/login-button.tsx`](https://github.com/marshall-johnson/nextjs-supabase-example/blob/main/src/components/login-button.tsx)
+- [`src/components/login-button.tsx`](https://github.com/Joe-etzkorn/nextjs-supabase-example/blob/main/src/components/login-button.tsx)
 
 ### Logout
 
-- [`src/components/logout-button.tsx`](https://github.com/marshall-johnson/nextjs-supabase-example/blob/main/src/components/logout-button.tsx)
+- [`src/components/logout-button.tsx`](https://github.com/Joe-etzkorn/nextjs-supabase-example/blob/main/src/components/logout-button.tsx)
 
 ## Fetching Session and User Data in Server Components
 
@@ -107,7 +107,7 @@ const user = session?.user;
 > [!NOTE]  
 > This value comes directly from the storage medium (usually cookies on the server) and many not be authentic. You can use `supabase.auth.getUser()` instead which authenticates the data by contacting the Supabase Auth server.
 
-Example in [`src/components/nav-bar.tsx`](https://github.com/marshall-johnson/nextjs-supabase-example/blob/main/src/components/nav-bar.tsx)
+Example in [`src/components/nav-bar.tsx`](https://github.com/Joe-etzkorn/nextjs-supabase-example/blob/main/src/components/nav-bar.tsx)
 
 ### Fetch user data directly in server components
 
@@ -118,15 +118,15 @@ const {
 } = await createSupabaseServerComponentClient().auth.getUser();
 ```
 
-Example in [`src/components/avatar.tsx`](https://github.com/marshall-johnson/nextjs-supabase-example/blob/main/src/components/avatar.tsx)
+Example in [`src/components/avatar.tsx`](https://github.com/Joe-etzkorn/nextjs-supabase-example/blob/main/src/components/avatar.tsx)
 
 ## Fetching User Data in Client Components
 
 To prevent repeating code when fetching the session in client components, create a custom hook `useSession()` which returns the user session object.
 
-The custom hook: [`src/lib/supabase/use-session.ts`](https://github.com/marshall-johnson/nextjs-supabase-example/blob/main/src/lib/supabase/use-session.ts)
+The custom hook: [`src/lib/supabase/use-session.ts`](https://github.com/Joe-etzkorn/nextjs-supabase-example/blob/main/src/lib/supabase/use-session.ts)
 
-Example of usage in [`src/components/user-information.tsx`](https://github.com/marshall-johnson/nextjs-supabase-example/blob/main/src/components/user-information.tsx)
+Example of usage in [`src/components/user-information.tsx`](https://github.com/Joe-etzkorn/nextjs-supabase-example/blob/main/src/components/user-information.tsx)
 
 ## Dynamically Rendering Client Components with User Data
 
@@ -134,13 +134,13 @@ When dealing with a client component that dynamically renders elements based on 
 
 To address this issue, we can implement the following solution:
 
-- Displaying a loading state until the user data is fetched. Example in [`src/components/user-information.tsx`](https://github.com/marshall-johnson/nextjs-supabase-example/blob/main/src/components/user-information.tsx)
+- Displaying a loading state until the user data is fetched. Example in [`src/components/user-information.tsx`](https://github.com/Joe-etzkorn/nextjs-supabase-example/blob/main/src/components/user-information.tsx)
 
 - If the client component has a server component as its parent, the session can be fetched at the parent level and passed down to the client component.
 
 - Creating a server component wrapper specifically for the client component. The server wrapper is responsible for fetching the session data and passing it down to the client. This setup allows reusability of the component. Example of this method;
-  - Server Wrapper: [`src/components/details-button-server.tsx`](https://github.com/marshall-johnson/nextjs-supabase-example/blob/main/src/components/details-button-server.tsx)
-  - Client Component: [`src/components/details-button-client.tsx`](https://github.com/marshall-johnson/nextjs-supabase-example/blob/main/src/components/details-button-client.tsx)
+  - Server Wrapper: [`src/components/details-button-server.tsx`](https://github.com/Joe-etzkorn/nextjs-supabase-example/blob/main/src/components/details-button-server.tsx)
+  - Client Component: [`src/components/details-button-client.tsx`](https://github.com/Joe-etzkorn/nextjs-supabase-example/blob/main/src/components/details-button-client.tsx)
 
 
 ### Page-based Protected Routes
