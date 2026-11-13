@@ -42,7 +42,7 @@ This file contains 3 functions used to call the supabase client on the server
 
 Create the `middleware.ts` in your `src` directory. This intercepts any route specified in the `matcher` and is used to refresh the supabase session cookies and also redirect users based on whether they're authenticated or not.
 
-**This can be used used for creating [protected routes](https://github.com/Joe-etzkorn/nextjs-supabase-example/blob/ba0d4d1b7f52a2f0435933892ea5d2b5cb7c1c0f/src/middleware.ts#L20).**
+**This can be used used for creating [protected routes](https://github.com/Joe-etzkorn/nextjs-supabase-example/blob/main/src/middleware.ts#L17-L20).**
 
 An alternative method of creating protected routes is highlighted [here](#page-based-protected-routes).
 
